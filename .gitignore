@@ -1,5 +1,8 @@
 /Builds
 /Temp
 /obj
-/UnityARKitPlugin
+/Assets/UnityARKitPlugin
 UnityARKitPlugin.meta
+.DS_Store
+*.meta
+/Library
