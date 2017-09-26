@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.iOS;
 
 public class GameController : MonoBehaviour {
 	public ShootController shootController;
@@ -8,8 +9,15 @@ public class GameController : MonoBehaviour {
 
 	public Camera mainCamera;
 
+	public bool enableARMode = false;
+
 	// Use this for initialization
 	void Start () {
+		if (enableARMode) {
+			EnableARMode ();
+		} else {
+			DisableARMode ();
+		}
 		brickGenController.GenBricks ();
 	}
 	
@@ -26,5 +34,15 @@ public class GameController : MonoBehaviour {
 		Brick brickScript = brick.GetComponent<Brick> ();
 		float score = brickScript.GetScore ();
 		Debug.Log ("Got Score: " + score);
+	}
+
+	void EnableARMode() {
+		mainCamera.GetComponent<UnityARVideo> ().enabled = true;
+		mainCamera.clearFlags = CameraClearFlags.Depth;
+	}
+
+	void DisableARMode() {
+		mainCamera.GetComponent<UnityARVideo> ().enabled = false;
+		mainCamera.clearFlags = CameraClearFlags.Color;
 	}
 }

@@ -116,10 +116,10 @@ Shader "Unlit/Brick"
                 float factor = 0.0;
 
                 if (specularStrength > 0) {
-                	factor = 2.0;
+                	factor = 1.0;
                 } else {
 					if (diffuseStrength > 0.2) {
-						factor = 1.0;
+						factor = 0.8;
 					} else {
 						factor = 0.6;
 					}

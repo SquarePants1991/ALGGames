@@ -12,30 +12,40 @@ public class Brick : MonoBehaviour
 	}
 	public float score;
 	public BrickType brickType;
+
+	public ParticleSystem valuableParticleSystem;
+	public GameObject explosionEffectType;
 	// Use this for initialization
 	void Start ()
 	{
-		setBrickType (BrickType.Normal);
+		
 	}
 
 	public void setBrickType(BrickType brickType) {
 		this.brickType = brickType;
 		Renderer renderer = gameObject.GetComponent<Renderer> ();
+		Debug.Log (valuableParticleSystem);
+		if (brickType == BrickType.Normal) {
+			valuableParticleSystem.gameObject.SetActive (false);
+		}
+		Color mainColor = Color.cyan;
 		switch (brickType) {
 		case BrickType.DoubleScore:
-			renderer.material.SetColor ("_MainColor", new Color(0x2b / 255.0f, 0x9e / 255.0f, 0xb3 / 255.0f));
+			mainColor = new Color (0x2b / 255.0f, 0x9e / 255.0f, 0xb3 / 255.0f);
 			break;
 		case BrickType.TribbleScore:
-			renderer.material.SetColor ("_MainColor", new Color(0x44 / 255.0f, 0xaf / 255.0f, 0x69 / 255.0f));
+			mainColor = new Color(0x44 / 255.0f, 0xaf / 255.0f, 0x69 / 255.0f);
 			break;
 		case BrickType.GatlinGun:
-			renderer.material.SetColor ("_MainColor", new Color(0xfc / 255.0f, 0xab / 255.0f, 0x10 / 255.0f));
+			mainColor = new Color(0xfc / 255.0f, 0xab / 255.0f, 0x10 / 255.0f);
 			break;
 		case BrickType.PowerGun:
-			renderer.material.SetColor ("_MainColor", new Color(0xf8 / 255.0f, 0x33 / 255.0f, 0x3c / 255.0f));
+			mainColor = new Color(0xf8 / 255.0f, 0x33 / 255.0f, 0x3c / 255.0f);
 			break;
-	
 		}
+		ParticleSystem.MainModule main = valuableParticleSystem.main;
+		main.startColor = mainColor;
+		renderer.material.SetColor ("_MainColor", mainColor);
 	}
 
 	public BrickType RandomBrickType() {
@@ -75,11 +85,17 @@ public class Brick : MonoBehaviour
 	void OnCollisionEnter(Collision collisionOther)
 	{
 		if (collisionOther.gameObject.tag == "bullet") {
+			CreateExplosionEffect ();
 			Debug.Log ("Hit..." + collisionOther.gameObject.tag);
 			ScoreService.sharedService.totalScore += GetScore ();
 			Destroy (gameObject);
 			Destroy (collisionOther.gameObject);
 		}
+	}
+
+	void CreateExplosionEffect() {
+		Instantiate (explosionEffectType, gameObject.transform.position, Quaternion.identity);
+
 	}
 }
 
