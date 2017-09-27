@@ -39,10 +39,12 @@ public class GameController : MonoBehaviour {
 	void EnableARMode() {
 		mainCamera.GetComponent<UnityARVideo> ().enabled = true;
 		mainCamera.clearFlags = CameraClearFlags.Depth;
+		GetComponent<UnityARCameraManager> ().enabled = true;
 	}
 
 	void DisableARMode() {
 		mainCamera.GetComponent<UnityARVideo> ().enabled = false;
 		mainCamera.clearFlags = CameraClearFlags.Color;
+		GetComponent<UnityARCameraManager> ().enabled = false;
 	}
 }

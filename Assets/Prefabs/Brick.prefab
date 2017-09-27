@@ -87,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 309bbb27b41ea4375bc3e616f76fe455, type: 2}
+  - {fileID: 2100000, guid: 87727e3daa37b4046a6687c81f0b3be4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133,13 +133,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1671588833614068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b30a0083cb77416490892dfef6f8e37, type: 3}
+  m_Script: {fileID: 11500000, guid: 37e87a35ae2ff44a5b91ee8f43671e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 5
+  score: 0
   brickType: 0
   valuableParticleSystem: {fileID: 198631130432458542}
-  explosionEffectType: {fileID: 1581796074802520, guid: 4e322b6c3a6b04ccba9037a4b5d7f6c5,
+  explosionEffectType: {fileID: 1581796074802520, guid: e1860dcece4834ba19537e6fc4b26be5,
     type: 2}
 --- !u!198 &198631130432458542
 ParticleSystem:
@@ -3417,7 +3417,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 52d73cdab96da43bcb4ec3975c5cd0a1, type: 2}
+  - {fileID: 2100000, guid: a17470e4908ba47dcb7c0f91331947b6, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

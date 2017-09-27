@@ -24,7 +24,6 @@ public class Brick : MonoBehaviour
 	public void setBrickType(BrickType brickType) {
 		this.brickType = brickType;
 		Renderer renderer = gameObject.GetComponent<Renderer> ();
-		Debug.Log (valuableParticleSystem);
 		if (brickType == BrickType.Normal) {
 			valuableParticleSystem.gameObject.SetActive (false);
 		}

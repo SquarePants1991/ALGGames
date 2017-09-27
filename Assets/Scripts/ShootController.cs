@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ShootController : MonoBehaviour
 {
 	public GameObject bulletType;
 	public float bulletSpeed = 5;
+	public Image shootCenterImage;
 
 	private double shootInterval;
 	private double timeFromLastShoot;
@@ -16,6 +18,7 @@ public class ShootController : MonoBehaviour
 		shootInterval = -1;
 		shootDirection = new Vector3 (0, 1, 0);
 	}
+
 	
 	// Update is called once per frame
 	void Update ()
