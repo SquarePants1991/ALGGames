@@ -24,9 +24,11 @@ public class Brick : MonoBehaviour
 	public void setBrickType(BrickType brickType) {
 		this.brickType = brickType;
 		Renderer renderer = gameObject.GetComponent<Renderer> ();
-		if (brickType == BrickType.Normal) {
+
+		{
 			valuableParticleSystem.gameObject.SetActive (false);
 		}
+
 		Color mainColor = Color.cyan;
 		switch (brickType) {
 		case BrickType.DoubleScore:

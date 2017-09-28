@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e87a35ae2ff44a5b91ee8f43671e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  score: 5
   brickType: 0
   valuableParticleSystem: {fileID: 198631130432458542}
   explosionEffectType: {fileID: 1581796074802520, guid: e1860dcece4834ba19537e6fc4b26be5,

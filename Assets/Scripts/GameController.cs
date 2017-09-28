@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.XR.iOS;
 
 public class GameController : MonoBehaviour {
-	public ShootController shootController;
+	public GameControlController gameControlController;
 	public BrickGenerateController brickGenController;
 
 	public Camera mainCamera;
+	public GameObject game3DEnv;
 
 	public bool enableARMode = false;
 
@@ -18,16 +19,18 @@ public class GameController : MonoBehaviour {
 		} else {
 			DisableARMode ();
 		}
-		brickGenController.GenBricks ();
+		gameControlController.enabled = false;
+		game3DEnv.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if ((Input.touches.Length > 0 && Input.GetTouch (0).phase == TouchPhase.Began) || Input.GetMouseButtonDown(0)) {
-			Debug.Log ("Shoot!!!" + mainCamera);	
-			Vector3 direction = mainCamera.transform.forward;
-			shootController.Shoot (direction,  mainCamera.transform.position);
-		}
+	}
+
+	public void GameStart() {
+		brickGenController.GenBricks ();
+		gameControlController.enabled = true;
+		game3DEnv.SetActive (true);
 	}
 
 	void BulletHitBrick(GameObject brick) {
