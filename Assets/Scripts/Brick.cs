@@ -89,7 +89,7 @@ public class Brick : MonoBehaviour
 			CreateExplosionEffect ();
 			Debug.Log ("Hit..." + collisionOther.gameObject.tag);
 			ScoreService.sharedService.totalScore += GetScore ();
-			Destroy (gameObject);
+			gameObject.SetActive (false);
 			Destroy (collisionOther.gameObject);
 		}
 	}
