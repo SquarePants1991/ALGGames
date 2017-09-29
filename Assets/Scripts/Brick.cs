@@ -88,9 +88,13 @@ public class Brick : MonoBehaviour
 		if (collisionOther.gameObject.tag == "bullet") {
 			CreateExplosionEffect ();
 			Debug.Log ("Hit..." + collisionOther.gameObject.tag);
-			ScoreService.sharedService.totalScore += GetScore ();
+			LevelService.sharedService.totalScore += GetScore ();
 			gameObject.SetActive (false);
 			Destroy (collisionOther.gameObject);
+		} else if (collisionOther.gameObject.tag == "finishLine") {
+			CreateExplosionEffect ();
+			gameObject.SetActive (false);
+			LevelService.sharedService.healthPoint--;
 		}
 	}
 

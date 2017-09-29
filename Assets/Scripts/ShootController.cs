@@ -26,12 +26,27 @@ public class ShootController : MonoBehaviour
 		if (shootInterval > 0) {
 			timeFromLastShoot += Time.deltaTime;
 			if (timeFromLastShoot >= shootInterval) {
-				Shoot (shootDirection, shootPosition);
+				ShootOnce (shootDirection, shootPosition);
+				timeFromLastShoot = 0;
 			}
 		}
 	}
 
-	public void Shoot(Vector3 direction, Vector3 fromPosition) {
+	public void BeginShoot() {
+		BufEffect contiShoot = LevelService.sharedService.GetBuf (BufEffectType.ContinuousShoot);
+		if (contiShoot != null) {
+			BeginIntervalShoot (1.0f / contiShoot.effectFactor);
+		} else {
+			Debug.Log ("Shoot Once" + shootDirection);
+			ShootOnce (shootDirection, shootPosition);
+		}
+	}
+
+	public void EndShoot() {
+		EndIntervalShoot ();
+	}
+
+	public void ShootOnce(Vector3 direction, Vector3 fromPosition) {
 		Vector3 genPosition = fromPosition;
 		genPosition.x += direction.x * 1f;
 		genPosition.y += direction.y * 1f;
@@ -47,6 +62,7 @@ public class ShootController : MonoBehaviour
 	public void BeginIntervalShoot(double interval) {
 		timeFromLastShoot = 0;
 		shootInterval = interval;
+		ShootOnce (shootDirection, shootPosition);
 	}
 
 	public void EndIntervalShoot() {
@@ -54,9 +70,9 @@ public class ShootController : MonoBehaviour
 		shootInterval = -1;
 	}
 
-	public void setShootPositonAndDirection(Vector3 position, Vector3 direction) {
+	public void setShootPositonAndDirection(Vector3 direction, Vector3 position) {
 		this.shootDirection = direction;
-		this.shootPosition = shootPosition;
+		this.shootPosition = position;
 	}
 }
 

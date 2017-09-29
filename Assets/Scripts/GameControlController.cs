@@ -27,6 +27,12 @@ public class GameControlController : MonoBehaviour
 		joyStickFingerId = -1;
 		shootButton.enabled = false;
 	}
+
+	public void Reset() {
+		xAngle = 0;
+		yAngle = 0;
+		playerCamera.transform.rotation = Quaternion.identity;
+	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -54,15 +60,16 @@ public class GameControlController : MonoBehaviour
 						}
 					} else {
 						if (touch.fingerId != joyStickFingerId) {
+							shootController.setShootPositonAndDirection (playerCamera.transform.forward, playerCamera.transform.position);
 							if (touch.phase == TouchPhase.Began) {
 								// fire
-								Vector3 direction = playerCamera.transform.forward;
-								shootController.Shoot (direction, playerCamera.transform.position);
+								shootController.BeginShoot ();
 								shootButton.transform.position = new Vector3 (touch.position.x, touch.position.y, 1.0f);
 								shootButton.enabled = true;
 							} else if (touch.phase == TouchPhase.Moved) {
 								shootButton.transform.position = new Vector3 (touch.position.x, touch.position.y, 1.0f);
 							} else if (touch.phase == TouchPhase.Ended) {
+								shootController.EndShoot ();
 								shootButton.enabled = false;
 							}
 
@@ -73,6 +80,7 @@ public class GameControlController : MonoBehaviour
 
 			}
 		} else {
+			shootController.setShootPositonAndDirection (playerCamera.transform.forward, playerCamera.transform.position);
 //			Vector3 newMousePosition = Input.mousePosition;
 //			yAngle += (newMousePosition.x - mouseLastPosition.x) * ySensitive;
 //			xAngle += -(newMousePosition.y - mouseLastPosition.y) * xSensitive;
@@ -82,7 +90,7 @@ public class GameControlController : MonoBehaviour
 				joyStick.StickControlBegin (mouseLastPosition);
 
 				Vector3 direction = playerCamera.transform.forward;
-				shootController.Shoot (direction, playerCamera.transform.position);
+				shootController.BeginShoot ();
 				shootButton.transform.position = new Vector3 (mouseLastPosition.x, mouseLastPosition.y, 1.0f);
 				shootButton.enabled = true;
 			} 
@@ -95,6 +103,7 @@ public class GameControlController : MonoBehaviour
 				yAngle += 60 * xAnglePercent * Time.deltaTime;
 				joyStick.StickControlMoved (new Vector2 (xAnglePercent * maxDeltaDistance, yAnglePercent * maxDeltaDistance));
 			} else {
+				shootController.EndShoot ();
 				joyStick.StickControlEnd ();
 				shootButton.enabled = false;
 			}

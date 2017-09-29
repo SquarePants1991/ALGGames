@@ -51,14 +51,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AdsService.cs" />
+     <Compile Include="Assets\Scripts\AutoDestroyObject.cs" />
      <Compile Include="Assets\Scripts\Brick.cs" />
      <Compile Include="Assets\Scripts\BrickGenerateController.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\GameControlController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\GUI\FinishUI.cs" />
      <Compile Include="Assets\Scripts\GUIController.cs" />
+     <Compile Include="Assets\Scripts\HighestScoreService.cs" />
      <Compile Include="Assets\Scripts\JoyStick.cs" />
-     <Compile Include="Assets\Scripts\ScoreService.cs" />
+     <Compile Include="Assets\Scripts\LevelService.cs" />
      <Compile Include="Assets\Scripts\ShootController.cs" />
      <Compile Include="Assets\UnityARKitPlugin\ARKitRemote\ARKitRemoteConnection.cs" />
      <Compile Include="Assets\UnityARKitPlugin\ARKitRemote\ConnectionMessageIds.cs" />

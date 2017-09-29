@@ -1,9 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CameraController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LevelService.cs">
     <Files>
-      <File FileName="Assets/Scripts/CameraController.cs" Line="37" Column="4" />
+      <File FileName="Assets/Scripts/AdsService.cs" Line="9" Column="51" />
       <File FileName="Assets/UnityARKitPlugin/Plugins/iOS/UnityARKit/Helpers/UnityARCameraManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="41" Column="37" />
+      <File FileName="Assets/Scripts/ShootController.cs" Line="65" Column="45" />
+      <File FileName="Assets/Scripts/GUIController.cs" Line="53" Column="50" />
+      <File FileName="Assets/Scripts/GUI/FinishUI.cs" Line="18" Column="19" />
+      <File FileName="Assets/Scripts/LevelService.cs" Line="73" Column="57" />
+      <File FileName="Assets/Scripts/GameControlController.cs" Line="61" Column="14" />
+      <File FileName="Assets/Scripts/JoyStick.cs" Line="35" Column="49" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour {
 	public GameObject game3DEnv;
 
 	public bool enableARMode = false;
+	public bool isGameRunning = false;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -25,12 +28,40 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (isGameRunning) {
+			
+		}
 	}
 
 	public void GameStart() {
+		isGameRunning = true;
 		brickGenController.GenBricks ();
+		gameControlController.Reset ();
 		gameControlController.enabled = true;
+		brickGenController.enabled = true;
 		game3DEnv.SetActive (true);
+		LevelService.sharedService.Reset ();
+		Debug.LogWarning (LevelService.sharedService.healthPoint);
+	}
+
+	public void GamePause() {
+		isGameRunning = false;
+		gameControlController.enabled = false;
+		brickGenController.enabled = false;
+	}
+
+	public void GameResume() {
+		isGameRunning = true;
+		gameControlController.enabled = true;
+		brickGenController.enabled = true;
+	}
+
+	public void GameOver() {
+		isGameRunning = false;
+		brickGenController.DestroyAllBricks ();
+		gameControlController.enabled = false;
+		game3DEnv.SetActive (false);
+		HighestScoreService.sharedService.SaveScore(LevelService.sharedService.totalScore);
 	}
 
 	void BulletHitBrick(GameObject brick) {

@@ -33,7 +33,6 @@ public class JoyStick : MonoBehaviour
 	}
 
 	public void StickControlMoved(Vector2 offset) {
-		Debug.Log (offset);
 		stickImage.transform.position = new Vector3(stickBaseImage.transform.position.x + offset.x, stickBaseImage.transform.position.y + offset.y, 0.0f);
 	}
 
